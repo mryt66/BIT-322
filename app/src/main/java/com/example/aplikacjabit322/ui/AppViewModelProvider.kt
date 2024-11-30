@@ -1,15 +1,15 @@
 package com.example.aplikacjabit322.ui
 
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
-import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesViewModel
 import com.example.aplikacjabit322.ui.screens.login.LoginViewModel
 
 
 object AppViewModelProvider {
     val Factory= viewModelFactory {
         initializer { LoginViewModel() }
+        initializer { ListPreferencesViewModel() }
 //        initializer {
 //            HomeViewModel(peopleApplication().container.itemsRepository)
 //        }
