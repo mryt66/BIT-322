@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesScreen
 import com.example.aplikacjabit322.ui.screens.login.LoginScreen
 import com.example.aplikacjabit322.ui.theme.AplikacjaBit322Theme
 
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
 //                ) {
 //                    Greeting("Android")
 //                }
-                LoginScreen(
+                ListPreferencesScreen(
                     onNavigateUp = { /*TODO*/ },
                     navigateBack = { /*TODO*/ },
 //                    navigateToItemDetails = ,
