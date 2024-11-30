@@ -11,6 +11,7 @@ import androidx.navigation.navArgument
 import com.example.aplikacjabit322.ui.screens.home.HomeDestination
 import com.example.aplikacjabit322.ui.screens.home.HomeScreen
 import com.example.aplikacjabit322.ui.screens.listHobbies.ListHobbiesDestination
+import com.example.aplikacjabit322.ui.screens.listHobbies.ListHobbiesScreen
 import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesDestination
 import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesScreen
 import com.example.aplikacjabit322.ui.screens.login.LoginDestination
@@ -64,7 +65,7 @@ fun AppBit322NavHost(
             arguments = listOf(navArgument(ListHobbiesDestination.arg) { type = NavType.StringType })
         ) { navBackStackEntry ->
             val login = navBackStackEntry.arguments?.getString(ListHobbiesDestination.arg)
-            ListPreferencesScreen(
+            ListHobbiesScreen(
                 login = login,
                 navigateBack = { navController.navigateUp() },
                 navigateToListHobbies = { navController.navigate(ListHobbiesDestination.route) }

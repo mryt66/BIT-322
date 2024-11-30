@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -43,7 +44,7 @@ object ListPreferencesDestination {
 fun ListPreferencesScreen(
     login: String?,
     navigateBack: () -> Unit,
-    navigateToListHobbies: () -> Unit,
+    navigateToListHobbies: (String) -> Unit,
     viewModel: ListPreferencesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val tags = listOf("Sport", "Muzyka", "Filmy", "Gry", "Gotowanie", "Podróże")
@@ -57,7 +58,14 @@ fun ListPreferencesScreen(
             Bit322TopAppBar(
                 title = "Preferencje",
                 canNavigateBack = true,
-                navigateUp = navigateBack
+                navigateUp = navigateBack,
+                canClickButton = true,
+                onClickButton = {
+                    if (true){//(viewModel.validateInput()) {
+                        navigateToListHobbies("login")
+                    }
+                },
+                buttonIcon = Icons.Default.Done,
             )
         }
     ) { innerPadding ->

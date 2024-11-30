@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplikacjabit322.Bit322TopAppBar
 import com.example.aplikacjabit322.ui.AppViewModelProvider
+import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesViewModel
 
 object ListHobbiesDestination {
     const val route = "listHobbies/{login}"
@@ -38,9 +39,9 @@ object ListHobbiesDestination {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListHobbiesScreen(
-    onNavigateUp: () -> Unit,
+    login: String?,
     navigateBack: () -> Unit,
-    navigateToHome: () -> Unit,
+    navigateToListHobbies: (String) -> Unit,
     viewModel: ListHobbiesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val tags = listOf("Sport", "Muzyka", "Filmy", "Gry", "Gotowanie", "Podróże")
@@ -150,12 +151,12 @@ fun PreferencesTags(
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun ListHobbiesScreenPreview() {
-    ListHobbiesScreen(
-        onNavigateUp = { /*TODO*/ },
-        navigateBack = { /*TODO*/ },
-        navigateToHome = { /*TODO*/ }
-    )
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun ListHobbiesScreenPreview() {
+//    ListHobbiesScreen(
+//        onNavigateUp = { /*TODO*/ },
+//        navigateBack = { /*TODO*/ },
+//        navigateToHome = { /*TODO*/ }
+//    )
+//}
