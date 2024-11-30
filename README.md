@@ -1,1 +1,1 @@
-# BIT-322 (zmiana
+# BIT-322 (zmiana)
