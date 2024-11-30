@@ -10,21 +10,29 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplikacjabit322.Bit322TopAppBar
+import com.example.aplikacjabit322.ui.AppViewModelProvider
+import com.example.aplikacjabit322.ui.screens.listHobbies.ListHobbiesViewModel
+
+object ProfileDestination {
+    const val route = "profile/{login}"
+    const val arg = "login"
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
-    onNavigateUp: () -> Unit,
+    login: String?,
     navigateBack: () -> Unit,
-    navigateToItemDetails: (Long) -> Unit,
-    navigateToHome: () -> Unit
+    navigateToListPreferences: (String) -> Unit,
+    viewModel: ProfileViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
 
     Scaffold(
         topBar = {
             Bit322TopAppBar(
-                title = "Witaj {NICK}!",
+                title = "Witaj $login",
                 canNavigateBack = true,
                 navigateUp = navigateBack
             )
@@ -36,9 +44,11 @@ fun ProfileScreen(
                 .fillMaxSize()
                 .padding(innerPadding),
         ) {
-            Button(onClick = { /*TODO*/ }) {
-                Text(text = "Edytuj hobby")
+            Button(onClick = { navigateToListPreferences(login?: "null") }) {
+                Text(text = "Edytuj swoje hobby")
             }
+
+
         }
     }
 }
