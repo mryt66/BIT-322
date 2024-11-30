@@ -6,11 +6,34 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 class LoginViewModel : ViewModel(){
+import com.google.firebase.firestore.FirebaseFirestore
+
+class LoginViewModel : ViewModel(){
+    var name = "nazwa Ja"
+    var mail = "gmail"
+    var login = "1234"
     var loginUiState by mutableStateOf(LoginUiState())
         private set
 
     fun saveToBase() {
         //TODO
+        val db = FirebaseFirestore.getInstance()
+
+        val userData = hashMapOf(
+            "name" to name,
+            "mail" to mail,
+            "login" to login
+        )
+
+        db.collection("USERS")
+            .add(userData) // Zapisujemy dokument z automatycznie wygenerowanym ID
+            .addOnSuccessListener { documentReference ->
+                println("DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                println("Error adding document: $e")
+            }
+
     }
 
     fun emailUpdate(email: String) {
