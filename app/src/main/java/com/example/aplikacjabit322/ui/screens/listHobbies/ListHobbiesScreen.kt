@@ -41,7 +41,7 @@ object ListHobbiesDestination {
 fun ListHobbiesScreen(
     login: String?,
     navigateBack: () -> Unit,
-    navigateToListHobbies: (String) -> Unit,
+    navigateToHome: (String) -> Unit,
     viewModel: ListHobbiesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val tags = listOf("Sport", "Muzyka", "Filmy", "Gry", "Gotowanie", "Podróże")
@@ -55,7 +55,11 @@ fun ListHobbiesScreen(
             Bit322TopAppBar(
                 title = "Hobby",
                 canNavigateBack = true,
-                navigateUp = navigateBack
+                navigateUp = navigateBack,
+                canClickButton = true,
+                onClickButton = {
+                    navigateToHome(login ?: "null")
+                },
             )
         }
     ) { innerPadding ->

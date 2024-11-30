@@ -1,6 +1,5 @@
 package com.example.phonebookapp.ui.navigation
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -16,6 +15,8 @@ import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesDes
 import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesScreen
 import com.example.aplikacjabit322.ui.screens.login.LoginDestination
 import com.example.aplikacjabit322.ui.screens.login.LoginScreen
+import com.example.aplikacjabit322.ui.screens.profile.ProfileDestination
+import com.example.aplikacjabit322.ui.screens.profile.ProfileScreen
 
 @Composable
 fun AppBit322NavHost(
@@ -35,7 +36,7 @@ fun AppBit322NavHost(
             LoginScreen(
                 navigateBack = { navController.popBackStack() },
                 navigateToListPreferences = {
-                    navController.navigate(ListPreferencesDestination.route )
+                    navController.navigate(ListPreferencesDestination.route)
                 }
             )
         }
@@ -45,12 +46,14 @@ fun AppBit322NavHost(
             arguments = listOf(navArgument(HomeDestination.arg) { type = NavType.StringType })
         ) { navBackStackEntry ->
             val login = navBackStackEntry.arguments?.getString(HomeDestination.arg)
-            HomeScreen(login = login)
+            HomeScreen(login = login, navigateBack = { navController.navigateUp() })
         }
 
         composable(
             route = ListPreferencesDestination.route,
-            arguments = listOf(navArgument(ListPreferencesDestination.arg) { type = NavType.StringType })
+            arguments = listOf(navArgument(ListPreferencesDestination.arg) {
+                type = NavType.StringType
+            })
         ) { navBackStackEntry ->
             val login = navBackStackEntry.arguments?.getString(ListPreferencesDestination.arg)
             ListPreferencesScreen(
@@ -62,14 +65,27 @@ fun AppBit322NavHost(
 
         composable(
             route = ListHobbiesDestination.route,
-            arguments = listOf(navArgument(ListHobbiesDestination.arg) { type = NavType.StringType })
+            arguments = listOf(navArgument(ListHobbiesDestination.arg) {
+                type = NavType.StringType
+            })
         ) { navBackStackEntry ->
             val login = navBackStackEntry.arguments?.getString(ListHobbiesDestination.arg)
             ListHobbiesScreen(
                 login = login,
                 navigateBack = { navController.navigateUp() },
-                navigateToListHobbies = { navController.navigate(ListHobbiesDestination.route) }
+                navigateToHome = { navController.navigate(HomeDestination.route) }
             )
+        }
+
+        composable(
+            route = ProfileDestination.route,
+            arguments = listOf(navArgument(ProfileDestination.arg) { type = NavType.StringType })
+        ) {
+            val login = it.arguments?.getString(ProfileDestination.arg)
+            ProfileScreen(
+                login = login,
+                navigateBack = { navController.navigateUp() },
+                navigateToListPreferences = { navController.navigate(ListPreferencesDestination.route) })
         }
 
 //        composable(route = EntryDestination.route) {
