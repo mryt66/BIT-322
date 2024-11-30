@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1066092382824",
+    "project_id": "bit2024-322",
+    "storage_bucket": "bit2024-322.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066092382824:android:4a4d0e36a03857609c89dd",
+        "android_client_info": {
+          "package_name": "com.example.aplikacjabit322"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDfKOtugHjwBr-pMtxRG2uLYSNQLxLkdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
