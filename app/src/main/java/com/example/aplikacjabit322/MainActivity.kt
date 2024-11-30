@@ -26,12 +26,16 @@ class MainActivity : ComponentActivity() {
 //                ) {
 //                    Greeting("Android")
 //                }
-                ListPreferencesScreen(
+//                ListPreferencesScreen(
+//                    onNavigateUp = { /*TODO*/ },
+//                    navigateBack = { /*TODO*/ },
+////                    navigateToItemDetails = ,
+//                    navigateToHome = { /*TODO*/ })
+                LoginScreen(
                     onNavigateUp = { /*TODO*/ },
                     navigateBack = { /*TODO*/ },
-//                    navigateToItemDetails = ,
-                    navigateToHome = { /*TODO*/ })
-
+                    navigateToHome = { /*TODO*/ }
+                )
             }
         }
     }
