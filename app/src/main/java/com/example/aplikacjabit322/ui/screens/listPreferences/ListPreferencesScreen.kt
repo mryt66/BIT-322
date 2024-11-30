@@ -1,5 +1,6 @@
 package com.example.aplikacjabit322.ui.screens.listPreferences
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,14 +30,20 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplikacjabit322.Bit322TopAppBar
 import com.example.aplikacjabit322.ui.AppViewModelProvider
+import com.example.phonebookapp.ui.navigation.NavigationDestination
 
+
+object ListPreferencesDestination {
+    const val route = "listPreferences/{login}"
+    const val arg = "login"
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListPreferencesScreen(
-    onNavigateUp: () -> Unit,
+    login: String?,
     navigateBack: () -> Unit,
-    navigateToHome: () -> Unit,
+    navigateToListHobbies: () -> Unit,
     viewModel: ListPreferencesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val tags = listOf("Sport", "Muzyka", "Filmy", "Gry", "Gotowanie", "Podróże")
@@ -60,13 +67,13 @@ fun ListPreferencesScreen(
                 .fillMaxSize()
                 .padding(innerPadding),
         ) {
-            Text(
-                text = "Co lubisz robić?",
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onSurface,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(16.dp)
-            )
+//            Text(
+//                text = "Co lubisz robić?",
+//                style = MaterialTheme.typography.titleLarge,
+//                color = MaterialTheme.colorScheme.onSurface,
+//                textAlign = TextAlign.Center,
+//                modifier = Modifier.padding(16.dp)
+//            )
             PreferencesTextField(value = preferencesDetails.question, onValueChange = viewModel::questionUpdate, label = "Co lubisz robic?", isError = "")
 
             PreferencesTags(
@@ -154,12 +161,12 @@ fun PreferencesTags(
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun ListPreferencesScreenPreview() {
-    ListPreferencesScreen(
-        onNavigateUp = { /*TODO*/ },
-        navigateBack = { /*TODO*/ },
-        navigateToHome = { /*TODO*/ }
-    )
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun ListPreferencesScreenPreview() {
+//    ListPreferencesScreen(
+//        onNavigateUp = { /*TODO*/ },
+//        navigateBack = { /*TODO*/ },
+//        navigateToHome = { /*TODO*/ }
+//    )
+//}

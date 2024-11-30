@@ -26,11 +26,18 @@ class MainActivity : ComponentActivity() {
 //                ) {
 //                    Greeting("Android")
 //                }
-                ListPreferencesScreen(
-                    onNavigateUp = { /*TODO*/ },
-                    navigateBack = { /*TODO*/ },
-//                    navigateToItemDetails = ,
-                    navigateToHome = { /*TODO*/ })
+//                ListPreferencesScreen(
+//                    onNavigateUp = { /*TODO*/ },
+//                    navigateBack = { /*TODO*/ },
+////                    navigateToItemDetails = ,
+//                    navigateToHome = { /*TODO*/ })
+//                LoginScreen(
+//                    onNavigateUp = { /*TODO*/ },
+//                    navigateBack = { /*TODO*/ },
+//                    navigateToListPreferences = { },
+//                    navigateToHome = { /*TODO*/ }
+//                )
+                AppBit322()
 
             }
         }
