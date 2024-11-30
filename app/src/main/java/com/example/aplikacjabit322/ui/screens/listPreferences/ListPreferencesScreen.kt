@@ -1,5 +1,6 @@
-package com.example.aplikacjabit322.ui.screens.listHobbies
+package com.example.aplikacjabit322.ui.screens.listPreferences
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -29,33 +31,41 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplikacjabit322.Bit322TopAppBar
 import com.example.aplikacjabit322.ui.AppViewModelProvider
-import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesViewModel
+import com.example.phonebookapp.ui.navigation.NavigationDestination
 
-object ListHobbiesDestination {
-    const val route = "listHobbies/{login}"
+
+object ListPreferencesDestination {
+    const val route = "listPreferences/{login}"
     const val arg = "login"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListHobbiesScreen(
+fun ListPreferencesScreen(
     login: String?,
     navigateBack: () -> Unit,
     navigateToListHobbies: (String) -> Unit,
-    viewModel: ListHobbiesViewModel = viewModel(factory = AppViewModelProvider.Factory)
+    viewModel: ListPreferencesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val tags = listOf("Sport", "Muzyka", "Filmy", "Gry", "Gotowanie", "Podróże")
-    val clickedTags = viewModel.listHobbiesUiState.clickedTags // Pobranie stanu klikniętych tagów
+    val clickedTags = viewModel.listPreferencesUiState.clickedTags // Pobranie stanu klikniętych tagów
     val sortedTags = viewModel.getSortedTags(tags) // Uzyskanie posortowanej listy tagów
 
-    val hobbiesDetails = viewModel.listHobbiesUiState
+    val preferencesDetails = viewModel.listPreferencesUiState
 
     Scaffold(
         topBar = {
             Bit322TopAppBar(
-                title = "Hobby",
+                title = "Preferencje",
                 canNavigateBack = true,
-                navigateUp = navigateBack
+                navigateUp = navigateBack,
+                canClickButton = true,
+                onClickButton = {
+                    if (true){//(viewModel.validateInput()) {
+                        navigateToListHobbies("login")
+                    }
+                },
+                buttonIcon = Icons.Default.Done,
             )
         }
     ) { innerPadding ->
@@ -65,14 +75,14 @@ fun ListHobbiesScreen(
                 .fillMaxSize()
                 .padding(innerPadding),
         ) {
-            Text(
-                text = "Proponowane Hobby",
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onSurface,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(16.dp)
-            )
-//            PreferencesTextField(value = hobbiesDetails.question, onValueChange = viewModel::questionUpdate, label = "Co lubisz robić?", isError = "")
+//            Text(
+//                text = "Co lubisz robić?",
+//                style = MaterialTheme.typography.titleLarge,
+//                color = MaterialTheme.colorScheme.onSurface,
+//                textAlign = TextAlign.Center,
+//                modifier = Modifier.padding(16.dp)
+//            )
+            PreferencesTextField(value = preferencesDetails.question, onValueChange = viewModel::questionUpdate, label = "Co lubisz robic?", isError = "")
 
             PreferencesTags(
                 tags = sortedTags,
@@ -81,6 +91,7 @@ fun ListHobbiesScreen(
             )
         }
     }
+
 }
 
 @Composable
@@ -92,6 +103,7 @@ fun PreferencesTextField(
         onValueChange = { newValue ->
             onValueChange(newValue)
         },
+//        textStyle = TextStyle(fontSize = (40-value.length).coerceIn(14, 24).sp),
         label = { Text(label) },
         modifier = Modifier
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
@@ -121,7 +133,12 @@ fun PreferencesTextField(
             imeAction = ImeAction.Next,
             capitalization = KeyboardCapitalization.Sentences
         ),
+        //Capitalization = KeyboardCapitalization.Words
+
+
     )
+
+
 }
 
 @Composable
@@ -147,14 +164,15 @@ fun PreferencesTags(
             ) {
                 Text(text = tag)
             }
+
         }
     }
 }
 
 //@Preview(showBackground = true, showSystemUi = true)
 //@Composable
-//fun ListHobbiesScreenPreview() {
-//    ListHobbiesScreen(
+//fun ListPreferencesScreenPreview() {
+//    ListPreferencesScreen(
 //        onNavigateUp = { /*TODO*/ },
 //        navigateBack = { /*TODO*/ },
 //        navigateToHome = { /*TODO*/ }
