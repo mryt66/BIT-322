@@ -2,6 +2,7 @@ package com.example.aplikacjabit322.ui
 
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.aplikacjabit322.ui.screens.listHobbies.ListHobbiesViewModel
 import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesViewModel
 import com.example.aplikacjabit322.ui.screens.login.LoginViewModel
 
@@ -10,6 +11,7 @@ object AppViewModelProvider {
     val Factory= viewModelFactory {
         initializer { LoginViewModel() }
         initializer { ListPreferencesViewModel() }
+        initializer { ListHobbiesViewModel() }
 //        initializer {
 //            HomeViewModel(peopleApplication().container.itemsRepository)
 //        }

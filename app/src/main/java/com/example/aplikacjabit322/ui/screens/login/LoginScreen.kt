@@ -24,13 +24,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplikacjabit322.ui.AppViewModelProvider
+import com.example.phonebookapp.ui.navigation.NavigationDestination
+
+
+object LoginDestination : NavigationDestination {
+    override val route = "ListPreferences/{itemId}"
+    override val titleRes = "Login"
+    const val itemIdArg = "itemId"
+    val routeWithArgs = "$route/{$itemIdArg}"
+}
+
 
 @Composable
 fun LoginScreen(
-    onNavigateUp: () -> Unit,
     navigateBack: () -> Unit,
-//    navigateToItemDetails: (Int) -> Unit,
-    navigateToHome: () -> Unit,
+    navigateToListPreferences: (String) -> Unit,
     viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
 
@@ -67,6 +75,9 @@ fun LoginScreen(
         )
         
         Button(onClick = { viewModel.saveToBase()}) {
+
+        }
+        Button(onClick = { navigateToListPreferences("Asdfa")}) {
 
         }
 

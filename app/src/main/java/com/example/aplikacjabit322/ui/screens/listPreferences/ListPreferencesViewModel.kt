@@ -4,10 +4,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.StateFlow
 
 class ListPreferencesViewModel : ViewModel() {
     var listPreferencesUiState by mutableStateOf(ListPreferencesUiState())
         private set
+
+//    val name: StateFlow<String> = it
 
     fun ontagClick(tag: String) {
         // Zmiana stanu klikniętego tagu
@@ -29,6 +32,7 @@ class ListPreferencesViewModel : ViewModel() {
 
 data class ListPreferencesUiState(
     val clickedTags: Map<String, Boolean> = emptyMap(), // Stan dla klikniętych tagów
-    val question: String = ""
+    val question: String = "",
+//    val nick: StateFlow<String> = mutableStateOf("")
 
 )

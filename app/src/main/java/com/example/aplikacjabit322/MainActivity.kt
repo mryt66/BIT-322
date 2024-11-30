@@ -29,13 +29,16 @@ class MainActivity : ComponentActivity() {
 //                ListPreferencesScreen(
 //                    onNavigateUp = { /*TODO*/ },
 //                    navigateBack = { /*TODO*/ },
-////                    navigateToItemDetails = ,
+//                    navigateToItemDetails = ,
 //                    navigateToHome = { /*TODO*/ })
-                LoginScreen(
-                    onNavigateUp = { /*TODO*/ },
-                    navigateBack = { /*TODO*/ },
-                    navigateToHome = { /*TODO*/ }
-                )
+//                LoginScreen(
+//                    onNavigateUp = { /*TODO*/ },
+//                    navigateBack = { /*TODO*/ },
+//                    navigateToListPreferences = { },
+//                    navigateToHome = { /*TODO*/ }
+//                )
+                AppBit322()
+
             }
         }
     }
