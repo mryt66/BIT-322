@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.aplikacjabit322.ui.screens.login.LoginScreen
 import com.example.aplikacjabit322.ui.theme.AplikacjaBit322Theme
 
 class MainActivity : ComponentActivity() {
@@ -18,12 +19,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             AplikacjaBit322Theme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    Greeting("Android")
+//                }
+                LoginScreen(
+                    onNavigateUp = { /*TODO*/ },
+                    navigateBack = { /*TODO*/ },
+//                    navigateToItemDetails = ,
+                    navigateToHome = { /*TODO*/ })
+
             }
         }
     }

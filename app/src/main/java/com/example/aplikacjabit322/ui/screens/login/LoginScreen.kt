@@ -1,15 +1,20 @@
 package com.example.aplikacjabit322.ui.screens.login
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
@@ -17,15 +22,61 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.aplikacjabit322.ui.AppViewModelProvider
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    onNavigateUp: () -> Unit,
+    navigateBack: () -> Unit,
+//    navigateToItemDetails: (Int) -> Unit,
+    navigateToHome: () -> Unit,
+    viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)
+) {
 
+//    val coroutineScope = rememberCoroutineScope()
+
+
+    val loginDetails = viewModel.loginUiState
+
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        EntryTextField(
+            value = loginDetails.email,
+            onValueChange = viewModel::emailUpdate,
+            label = "email",
+            isError = ""
+        )
+        EntryTextField(
+            value = loginDetails.password,
+            onValueChange = viewModel::passwordUpdate,
+            label = "password",
+            isError = ""
+        )
+        EntryTextField(
+            value = loginDetails.nick,
+            onValueChange = viewModel::nickUpdate,
+            label = "nick",
+            isError = ""
+        )
+        
+        Button(onClick = { viewModel.saveToBase()}) {
+
+        }
+
+    }
 
 }
 
 @Composable
-fun EntryTextField(value: String, onValueChange: (String) -> Unit, label: String, isError: String
+fun EntryTextField(
+    value: String, onValueChange: (String) -> Unit, label: String, isError: String
 ) {
     OutlinedTextField(
         value = value,
@@ -66,6 +117,8 @@ fun EntryTextField(value: String, onValueChange: (String) -> Unit, label: String
 
 
     )
+
+
 }
 
 @Preview
