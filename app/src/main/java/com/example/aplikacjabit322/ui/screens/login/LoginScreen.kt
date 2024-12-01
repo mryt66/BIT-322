@@ -73,12 +73,12 @@ fun LoginScreen(
             label = "nick",
             isError = ""
         )
-        
-        Button(onClick = { viewModel.saveToBase()}) {
 
-        }
-        Button(onClick = { navigateToListPreferences("Asdfa")}) {
-
+        Button(onClick = {
+            viewModel.saveToBase()
+            navigateToListPreferences("Asdfa")
+        }) {
+            Text(text = "Save")
         }
 
     }

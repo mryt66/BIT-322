@@ -2,9 +2,13 @@ package com.example.aplikacjabit322.ui
 
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.aplikacjabit322.ui.screens.hobby.HobbyViewModel
+import com.example.aplikacjabit322.ui.screens.home.HomeViewModel
 import com.example.aplikacjabit322.ui.screens.listHobbies.ListHobbiesViewModel
 import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesViewModel
 import com.example.aplikacjabit322.ui.screens.login.LoginViewModel
+import com.example.aplikacjabit322.ui.screens.profile.ProfileViewModel
+import com.example.aplikacjabit322.ui.screens.upload.UploadViewModel
 
 
 object AppViewModelProvider {
@@ -12,6 +16,12 @@ object AppViewModelProvider {
         initializer { LoginViewModel() }
         initializer { ListPreferencesViewModel() }
         initializer { ListHobbiesViewModel() }
+        initializer { HomeViewModel() }
+        initializer { HobbyViewModel() }
+        initializer { UploadViewModel() }
+        initializer { ProfileViewModel() }
+
+
 //        initializer {
 //            HomeViewModel(peopleApplication().container.itemsRepository)
 //        }

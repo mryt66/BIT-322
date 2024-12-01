@@ -7,6 +7,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.aplikacjabit322.ui.screens.hobby.HobbyDestination
+import com.example.aplikacjabit322.ui.screens.hobby.HobbyScreen
 import com.example.aplikacjabit322.ui.screens.home.HomeDestination
 import com.example.aplikacjabit322.ui.screens.home.HomeScreen
 import com.example.aplikacjabit322.ui.screens.listHobbies.ListHobbiesDestination
@@ -17,6 +19,8 @@ import com.example.aplikacjabit322.ui.screens.login.LoginDestination
 import com.example.aplikacjabit322.ui.screens.login.LoginScreen
 import com.example.aplikacjabit322.ui.screens.profile.ProfileDestination
 import com.example.aplikacjabit322.ui.screens.profile.ProfileScreen
+import com.example.aplikacjabit322.ui.screens.upload.UploadDestination
+import com.example.aplikacjabit322.ui.screens.upload.UploadScreen
 
 @Composable
 fun AppBit322NavHost(
@@ -46,7 +50,14 @@ fun AppBit322NavHost(
             arguments = listOf(navArgument(HomeDestination.arg) { type = NavType.StringType })
         ) { navBackStackEntry ->
             val login = navBackStackEntry.arguments?.getString(HomeDestination.arg)
-            HomeScreen(login = login, navigateBack = { navController.navigateUp() })
+            HomeScreen(
+                login = login,
+                navigateBack = { navController.navigateUp() },
+                navigateToProfile = { navController.navigate(ProfileDestination.route) },
+                navigateToHobby = { navController.navigate(HobbyDestination.route) },
+                navigateToHome = { navController.navigate(HomeDestination.route) },
+                navigateToUpload = { navController.navigate(UploadDestination.route) }
+            )
         }
 
         composable(
@@ -85,7 +96,37 @@ fun AppBit322NavHost(
             ProfileScreen(
                 login = login,
                 navigateBack = { navController.navigateUp() },
-                navigateToListPreferences = { navController.navigate(ListPreferencesDestination.route) })
+                navigateToListPreferences = { navController.navigate(ListPreferencesDestination.route) },
+                navigateToListHobby = { navController.navigate(HobbyDestination.route) }
+            )
+        }
+
+        composable(
+            route = UploadDestination.route,
+            arguments = listOf(navArgument(UploadDestination.arg) { type = NavType.StringType })
+        )
+        { navBackStackEntry ->
+            val login = navBackStackEntry.arguments?.getString(UploadDestination.arg)
+            UploadScreen(
+                login = login,
+                navigateBack = { navController.navigateUp() },
+
+            )
+        }
+
+        composable(
+            route = HobbyDestination.route,
+            arguments = listOf(navArgument(HobbyDestination.arg) { type = NavType.StringType })
+        ){
+            val login = it.arguments?.getString(HobbyDestination.arg)
+            HobbyScreen(
+                login = login,
+                navigateBack = { navController.navigateUp() },
+                navigateToHome = { navController.navigate(HomeDestination.route) },
+                navigateToProfile = { navController.navigate(ProfileDestination.route) },
+                navigateToHobby = { navController.navigate(HobbyDestination.route) },
+                navigateToUpload = { navController.navigate(UploadDestination.route) }
+            )
         }
 
 //        composable(route = EntryDestination.route) {

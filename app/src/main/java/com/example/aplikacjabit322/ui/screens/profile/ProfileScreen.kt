@@ -26,6 +26,7 @@ fun ProfileScreen(
     login: String?,
     navigateBack: () -> Unit,
     navigateToListPreferences: (String) -> Unit,
+    navigateToListHobby: (String) -> Unit,
     viewModel: ProfileViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
 
@@ -44,8 +45,12 @@ fun ProfileScreen(
                 .fillMaxSize()
                 .padding(innerPadding),
         ) {
-            Button(onClick = { navigateToListPreferences(login?: "null") }) {
+            Button(onClick = { navigateToListHobby(login?: "null") }) {
                 Text(text = "Edytuj swoje hobby")
+            }
+
+            Button(onClick = { navigateToListPreferences(login?: "null") }) {
+                Text(text = "Edytuj swoje preferencje")
             }
 
 

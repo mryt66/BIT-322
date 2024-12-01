@@ -1,18 +1,20 @@
-package com.example.aplikacjabit322.ui.screens.home
+package com.example.aplikacjabit322.ui.screens.hobby
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel: ViewModel() {
-    var homeUiState by mutableStateOf(HomeUiState())
-    private set
+class HobbyViewModel : ViewModel() {
+    var hobbyUiState by mutableStateOf(HobbyUiState())
+        private set
 
-
+    fun changeList(whichList: Int) {
+        hobbyUiState = hobbyUiState.copy(whichList = whichList)
+    }
 }
 
-data class HomeUiState(
+data class HobbyUiState(
     val name: String = "",
     val surname: String = "",
     val email: String = "",
@@ -22,4 +24,6 @@ data class HomeUiState(
     val listOfDescriptions: List<String> = emptyList(),
     val listOfLikes: List<Int> = emptyList(),
     val listOfUsernames: List<String> = emptyList(),
+    val whichList: Int = 0,
+//    val listOfComunities:
 )

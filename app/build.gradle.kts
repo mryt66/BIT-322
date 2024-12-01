@@ -69,6 +69,8 @@ dependencies {
 
     implementation( "com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
 
+    implementation("io.coil-kt:coil-compose:2.6.0")
+
     implementation("com.google.firebase:firebase-auth:23.1.0")
     implementation("com.google.firebase:firebase-firestore:25.1.1")
     testImplementation("junit:junit:4.13.2")
