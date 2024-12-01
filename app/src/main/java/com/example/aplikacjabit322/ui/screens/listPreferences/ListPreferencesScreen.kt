@@ -88,11 +88,6 @@ fun ListPreferencesScreen(
     navigateToListHobbies: (String) -> Unit,
     viewModel: ListPreferencesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
-
-//    val tags = viewModel::readAllPreferences //listOf("Sport", "Muzyka", "Filmy", "Gry", "Gotowanie", "Podróże")
-//    val clickedTags = viewModel.listPreferencesUiState.clickedTags // Pobranie stanu klikniętych tagów
-//    val sortedTags = viewModel.getSortedTags(tags) // Uzyskanie posortowanej listy tagów
-
     val preferencesUiState = viewModel.listPreferencesUiState
 
     Scaffold(
@@ -103,7 +98,7 @@ fun ListPreferencesScreen(
                 navigateUp = navigateBack,
                 canClickButton = true,
                 onClickButton = {
-                    if (true){//(viewModel.validateInput()) {
+                    if (viewModel.validateInput()) {
                         navigateToListHobbies("login")
                     }
                 },
@@ -115,47 +110,30 @@ fun ListPreferencesScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-        ) {
+            horizontalAlignment = Alignment.CenterHorizontally
 
-            Text(
-                text = "Co lubisz robić?",
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onSurface,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(16.dp)
+        ) {
+            // Preferences TextField
+            PreferencesTextField(
+                value = preferencesUiState.question,
+                onValueChange = viewModel::questionUpdate,
+                label = "What would u like to do?",
+                isError = preferencesUiState.questionError
             )
-            Button(onClick = { viewModel::search }) {
-                Text(text = "search")
+
+            // Search Button
+            Button(onClick = { viewModel.search(preferencesUiState.question) }) {
+                Text(text = "Search")
             }
-            if (preferencesUiState.searchStatus)
-            {
+
+            // Display sorted tags if search status is true
+            if (preferencesUiState.searchStatus) {
                 DisplaySortedTags(viewModel = viewModel, modifier = Modifier.padding(16.dp))
             }
         }
-//        Column(
-//            horizontalAlignment = Alignment.CenterHorizontally,
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .padding(innerPadding),
-//        ) {
-////            Text(
-////                text = "Co lubisz robić?",
-////                style = MaterialTheme.typography.titleLarge,
-////                color = MaterialTheme.colorScheme.onSurface,
-////                textAlign = TextAlign.Center,
-////                modifier = Modifier.padding(16.dp)
-////            )
-//            PreferencesTextField(value = preferencesDetails.question, onValueChange = viewModel::questionUpdate, label = "Co lubisz robic?", isError = "")
-//
-//            PreferencesTags(
-//                tags = sortedTags,
-//                clickedTags = clickedTags,
-//                onTagClick = viewModel::ontagClick
-//            )
-//        }
     }
-
 }
+
 
 @Composable
 fun PreferencesTextField(

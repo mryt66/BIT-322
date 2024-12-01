@@ -17,6 +17,8 @@ import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesDes
 import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesScreen
 import com.example.aplikacjabit322.ui.screens.login.LoginDestination
 import com.example.aplikacjabit322.ui.screens.login.LoginScreen
+import com.example.aplikacjabit322.ui.screens.map.FullMapScreen
+import com.example.aplikacjabit322.ui.screens.map.MapDestination
 import com.example.aplikacjabit322.ui.screens.profile.ProfileDestination
 import com.example.aplikacjabit322.ui.screens.profile.ProfileScreen
 import com.example.aplikacjabit322.ui.screens.upload.UploadDestination
@@ -121,7 +123,7 @@ fun AppBit322NavHost(
         composable(
             route = HobbyDestination.route,
             arguments = listOf(navArgument(HobbyDestination.arg) { type = NavType.StringType })
-        ){
+        ) {
             val login = it.arguments?.getString(HobbyDestination.arg)
             HobbyScreen(
                 login = login,
@@ -129,8 +131,17 @@ fun AppBit322NavHost(
                 navigateToHome = { navController.navigate(HomeDestination.route) },
                 navigateToProfile = { navController.navigate(ProfileDestination.route) },
                 navigateToHobby = { navController.navigate(HobbyDestination.route) },
-                navigateToUpload = { navController.navigate(UploadDestination.route) }
+                navigateToUpload = { navController.navigate(UploadDestination.route) },
+                navigateToMap = { navController.navigate(MapDestination.route) }
             )
+        }
+
+        composable(
+            route = MapDestination.route
+        ) {
+            FullMapScreen {
+                navController.navigateUp()
+            }
         }
 
 //        composable(route = EntryDestination.route) {

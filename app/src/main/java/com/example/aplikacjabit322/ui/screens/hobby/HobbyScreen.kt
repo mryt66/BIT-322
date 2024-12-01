@@ -69,6 +69,7 @@ fun HobbyScreen(
     navigateToProfile: (String) -> Unit,
     navigateToHobby: (String) -> Unit,
     navigateToUpload: (String) -> Unit,
+    navigateToMap: () -> Unit,
     viewModel: HobbyViewModel = viewModel(factory = AppViewModelProvider.Factory),
 //    modifier: Modifier = Modifier.height(240.dp)
 ) {
@@ -114,6 +115,9 @@ fun HobbyScreen(
                 Button(onClick = { viewModel.changeList(2) }, modifier = Modifier.padding(8.dp)) {
                     Text(text = "Community")
                 }
+//                Button(onClick = { viewModel.changeList(3) }, modifier = Modifier.padding(8.dp)) {
+//                    Text(text = "Map")
+//                }
 
 
             }
@@ -185,6 +189,9 @@ fun HobbyScreen(
                                     )
                                 }
                             }
+                        }
+                        3 -> {
+                            navigateToMap()
                         }
                     }
 //                        YouTubePlayer(

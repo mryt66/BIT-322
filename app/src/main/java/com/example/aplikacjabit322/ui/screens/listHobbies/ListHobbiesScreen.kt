@@ -54,7 +54,7 @@ fun ListHobbiesScreen(
     Scaffold(
         topBar = {
             Bit322TopAppBar(
-                title = "Hobby",
+                title = "Suggested Hobby",
                 canNavigateBack = true,
                 navigateUp = navigateBack,
                 canClickButton = true,
@@ -72,7 +72,7 @@ fun ListHobbiesScreen(
                 .padding(innerPadding),
         ) {
             Text(
-                text = "Proponowane Hobby",
+                text = "Mark your hobbies!",
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,

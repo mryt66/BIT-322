@@ -14,6 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesScreen
 import com.example.aplikacjabit322.ui.screens.login.LoginScreen
+import com.example.aplikacjabit322.ui.screens.map.FullMapScreen
+//import com.example.aplikacjabit322.ui.screens.map.MapFragment
+import com.example.aplikacjabit322.ui.screens.map.MapScreen
 import com.example.aplikacjabit322.ui.screens.profile.ThemeScreen
 import com.example.aplikacjabit322.ui.theme.AplikacjaBit322Theme
 import com.example.aplikacjabit322.ui.theme.ThemePreferences
@@ -33,6 +36,8 @@ class MainActivity : ComponentActivity() {
 //                    ThemeScreen(themeViewModel = themeViewModel)
 
                     AppBit322()
+
+//                    MapFragment()
                 }
             }
 //            AplikacjaBit322Theme {
