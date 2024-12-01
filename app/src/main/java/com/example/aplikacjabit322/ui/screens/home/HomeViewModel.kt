@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.aplikacjabit322.ui.screens.hobby.Community
 
 class HomeViewModel: ViewModel() {
     var homeUiState by mutableStateOf(HomeUiState())
@@ -13,13 +14,35 @@ class HomeViewModel: ViewModel() {
 }
 
 data class HomeUiState(
-    val name: String = "",
-    val surname: String = "",
-    val email: String = "",
-    val password: String = "",
     val nick: String = "",
-    val listOfVideos: List<String> = emptyList(),
-    val listOfDescriptions: List<String> = emptyList(),
-    val listOfLikes: List<Int> = emptyList(),
-    val listOfUsernames: List<String> = emptyList(),
+    val listOfImages: List<Image> = emptyList(),
+    val listOfArticles: List<Article> = emptyList(),
+    val listOfCommunities: List<Community> = emptyList(),
+    val listOfFunFacts: List<FunFact> = emptyList(),
+)
+
+
+
+data class Community(
+    val description: String,
+    val nick: String,
+    val photoUrl: String,
+    val title: String,
+    val likes: Int
+)
+
+data class FunFact(
+    val fact: String,
+    val likes: Int
+)
+
+data class Article(
+    val title: String,
+    val content: String,
+    val likes: Int
+)
+
+data class Image(
+    val url: String,
+    val likes: Int
 )

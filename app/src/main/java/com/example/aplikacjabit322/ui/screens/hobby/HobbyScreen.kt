@@ -40,6 +40,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -89,18 +90,10 @@ fun HobbyScreen(
                 .padding(innerPadding)
         ) {
             EntryDrop(
-                types = listOf("Sport", "Muzyka", "Filmy", "Gry", "Gotowanie", "Podróże"),
-                typesAndColor = listOf(
-                    "Sport" to Color.Red,
-                    "Muzyka" to Color.Blue,
-                    "Filmy" to Color.Green,
-                    "Gry" to Color.Yellow,
-                    "Gotowanie" to Color.Magenta,
-                    "Podróże" to Color.Cyan
-                ),
-                value = "Sport",
-                onValueChange = {},
-                label = "Wybierz hobby"
+                types = hobbyUiState.hobbies,
+                value = hobbyUiState.selectedHobby,
+                onValueChange = { viewModel.updateSelectedHobby(it)},
+                label = "Select hobby"
             )
             Row(
                 verticalAlignment = Alignment.Top,
@@ -109,13 +102,13 @@ fun HobbyScreen(
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                Button(onClick = { viewModel.changeList(0) }) {
+                Button(onClick = { viewModel.changeList(0) }, modifier = Modifier.padding(8.dp)) {
                 Text(text = "YT")
             }
-                Button(onClick = { viewModel.changeList(1) }) {
+                Button(onClick = { viewModel.changeList(1) }, modifier = Modifier.padding(8.dp)) {
                     Text(text = "Articles")
                 }
-                Button(onClick = { viewModel.changeList(2) }) {
+                Button(onClick = { viewModel.changeList(2) }, modifier = Modifier.padding(8.dp)) {
                     Text(text = "Community")
                 }
 
@@ -126,7 +119,7 @@ fun HobbyScreen(
         LazyColumn(
             content = {
                 item {
-//                Text(text = "Witaj $login", modifier = Modifier.padding(8.dp), fontSize = 32.sp)
+                Text(text = "Witaj $login", modifier = Modifier.padding(8.dp), fontSize = 32.sp)
 //                when (hobbyUiState) {
 //                    is HobbyUiState.Loading -> {
 //                        Text(text = "Loading...", modifier = Modifier.padding(8.dp), fontSize = 32.sp)
@@ -178,6 +171,14 @@ fun HobbyScreen(
                                     )
                                     Text(
                                         text = "@${community.nick}",
+                                        modifier = Modifier.padding(8.dp)
+                                    )
+                                    Text(
+                                        text = community.title,
+                                        modifier = Modifier.padding(8.dp)
+                                    )
+                                    Text(
+                                        text = "Likes: ${community.likes}",
                                         modifier = Modifier.padding(8.dp)
                                     )
                                 }
