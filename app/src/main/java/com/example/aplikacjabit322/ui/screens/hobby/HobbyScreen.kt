@@ -154,7 +154,7 @@ fun HobbyScreen(
                             "    content = \"Krawiectwo jest jedną z najstarszych form rzemiosła. Początkowo ludzie używali skór zwierząt, które łączyli prostymi technikami...\",\n" +
                             "    likes = 1200\n" +
                             ")", "Gotowanie towarzyszy ludzkości od tysięcy lat. Pierwsze dowody na świadome gotowanie pochodzą z czasów prehistorycznych.", "Article 3", "Article 4")
-                    val exampleCommunities = listOf(nowy, cookingCommunity, nowy, nowy)
+                    val exampleCommunities = listOf(nowy)
 
                     when (hobbyUiState.whichList) {
                         0 -> {
