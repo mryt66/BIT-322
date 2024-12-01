@@ -12,6 +12,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -47,39 +48,42 @@ fun LoginScreen(
 
     val loginDetails = viewModel.loginUiState
 
+    Scaffold {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            EntryTextField(
+                value = loginDetails.email,
+                onValueChange = viewModel::emailUpdate,
+                label = "email",
+                isError = ""
+            )
+            EntryTextField(
+                value = loginDetails.password,
+                onValueChange = viewModel::passwordUpdate,
+                label = "password",
+                isError = ""
+            )
+            EntryTextField(
+                value = loginDetails.nick,
+                onValueChange = viewModel::nickUpdate,
+                label = "nick",
+                isError = ""
+            )
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        EntryTextField(
-            value = loginDetails.email,
-            onValueChange = viewModel::emailUpdate,
-            label = "email",
-            isError = ""
-        )
-        EntryTextField(
-            value = loginDetails.password,
-            onValueChange = viewModel::passwordUpdate,
-            label = "password",
-            isError = ""
-        )
-        EntryTextField(
-            value = loginDetails.nick,
-            onValueChange = viewModel::nickUpdate,
-            label = "nick",
-            isError = ""
-        )
+            Button(onClick = {
+                viewModel.saveToBase()
+                navigateToListPreferences("Asdfa")
+            }) {
+                Text(text = "Save")
+            }
 
-        Button(onClick = {
-            viewModel.saveToBase()
-            navigateToListPreferences("Asdfa")
-        }) {
-            Text(text = "Save")
         }
+
 
     }
 

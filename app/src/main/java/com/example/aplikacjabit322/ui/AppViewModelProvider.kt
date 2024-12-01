@@ -9,6 +9,7 @@ import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesVie
 import com.example.aplikacjabit322.ui.screens.login.LoginViewModel
 import com.example.aplikacjabit322.ui.screens.profile.ProfileViewModel
 import com.example.aplikacjabit322.ui.screens.upload.UploadViewModel
+import com.example.aplikacjabit322.ui.theme.ThemeViewModel
 
 
 object AppViewModelProvider {

@@ -93,12 +93,12 @@ fun ListPreferencesScreen(
 //    val clickedTags = viewModel.listPreferencesUiState.clickedTags // Pobranie stanu klikniętych tagów
 //    val sortedTags = viewModel.getSortedTags(tags) // Uzyskanie posortowanej listy tagów
 
-    val preferencesDetails = viewModel.listPreferencesUiState
+    val preferencesUiState = viewModel.listPreferencesUiState
 
     Scaffold(
         topBar = {
             Bit322TopAppBar(
-                title = "Preferencje",
+                title = "Mark your preferences",
                 canNavigateBack = true,
                 navigateUp = navigateBack,
                 canClickButton = true,
@@ -111,7 +111,27 @@ fun ListPreferencesScreen(
             )
         }
     ) { innerPadding ->
-        DisplaySortedTags(modifier = Modifier.padding(innerPadding))
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
+        ) {
+
+            Text(
+                text = "Co lubisz robić?",
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onSurface,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(16.dp)
+            )
+            Button(onClick = { viewModel::search }) {
+                Text(text = "search")
+            }
+            if (preferencesUiState.searchStatus)
+            {
+                DisplaySortedTags(viewModel = viewModel, modifier = Modifier.padding(16.dp))
+            }
+        }
 //        Column(
 //            horizontalAlignment = Alignment.CenterHorizontally,
 //            modifier = Modifier

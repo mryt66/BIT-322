@@ -23,6 +23,15 @@ class ListPreferencesViewModel : ViewModel() {
         )
     }
 
+    fun search(tag: String){
+        if (tag.isNotBlank()){
+            //szukaj
+            listPreferencesUiState = listPreferencesUiState.copy(searchStatus = true)
+        }
+
+
+    }
+
     fun getSortedTags(tags: List<String>): List<String> {
         return tags.sortedWith(compareByDescending { listPreferencesUiState.clickedTags[it] ?: false })
     }
@@ -61,6 +70,7 @@ class ListPreferencesViewModel : ViewModel() {
 data class ListPreferencesUiState(
     val clickedTags: Map<String, Boolean> = emptyMap(), // Stan dla klikniętych tagów
     val question: String = "",
+    val searchStatus : Boolean = false
 //    val nick: StateFlow<String> = mutableStateOf("")
 
 )
