@@ -76,15 +76,12 @@ fun HomeScreen(
 
         val maxItemsPerCategory = 5
 
-// Przycinamy każdą listę do maksymalnie 5 elementów
         var limitedFunFacts = homeUiState.listOfFunFacts.take(maxItemsPerCategory)
         val limitedCommunities = homeUiState.listOfCommunities.take(maxItemsPerCategory)
         val limitedArticles = homeUiState.listOfArticles.take(maxItemsPerCategory)
         val limitedImages = homeUiState.listOfImages.take(maxItemsPerCategory)
 
 
-
-// Tworzymy złączoną listę naprzemienną
         val mixedList = mutableListOf<Any>()
         for (i in 0 until maxItemsPerCategory) {
             if (i < limitedFunFacts.size) mixedList.add(limitedFunFacts[i])
@@ -113,30 +110,6 @@ fun HomeScreen(
 
 
 }
-
-//@Composable
-//fun YouTubePlayer(
-//    youtubeVideoId: String,
-//    lifecycleOwner: LifecycleOwner
-//){
-//    AndroidView(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .padding(8.dp)
-//            .clip(RoundedCornerShape(16.dp)),
-//        factory = { context->
-//            YouTubePlayerView(context = context).apply {
-//                lifecycleOwner.lifecycle.addObserver(this)
-//
-//                addYouTubePlayerListener(object: AbstractYouTubePlayerListener(){
-//                    override fun onReady(youTubePlayer: YouTubePlayer) {
-//                        youTubePlayer.loadVideo(youtubeVideoId, 0f)
-//                    }
-//                })
-//            }
-//        }
-//    )
-//}
 
 @Composable
 fun FunFactCard(
@@ -180,3 +153,156 @@ fun FunFactCard(
         }
     }
 }
+
+@Composable
+fun CommunityCard(
+    community: Community,
+    modifier: Modifier = Modifier
+) {
+    var likes by remember { mutableStateOf(community.likes) }
+    var isLiked by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = modifier
+            .padding(8.dp)
+            .clip(RoundedCornerShape(8.dp))
+    ) {
+        // Logo lub obraz społeczności
+        AsyncImage(
+            model = community.photoUrl,
+            placeholder = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = "Community Image",
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        // Nazwa społeczności i opis
+        Text(
+            text = community.title,
+            fontSize = 20.sp,
+            modifier = Modifier.padding(8.dp)
+        )
+        Text(
+            text = community.description,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(8.dp)
+        )
+
+        // Przyciski like
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start,
+            modifier = Modifier.padding(start = 8.dp)
+        ) {
+            IconButton(
+                onClick = {
+                    isLiked = !isLiked
+                    likes += if (isLiked) 1 else -1
+                }
+            ) {
+                Icon(
+                    imageVector = if (isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+                    contentDescription = if (isLiked) "Unlike" else "Like",
+                    tint = if (isLiked) Color.Green else Color.Gray
+                )
+            }
+            Text(text = "$likes likes", fontSize = 16.sp, modifier = Modifier.padding(start = 4.dp))
+        }
+    }
+}
+
+
+@Composable
+fun ArticleCard(
+    article: Article,
+    modifier: Modifier = Modifier
+) {
+    var likes by remember { mutableStateOf(article.likes) }
+    var isLiked by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = modifier
+            .padding(8.dp)
+            .clip(RoundedCornerShape(8.dp))
+    ) {
+        // Tytuł artykułu
+        Text(
+            text = article.title,
+            fontSize = 22.sp,
+            modifier = Modifier.padding(8.dp)
+        )
+
+        // Treść artykułu
+        Text(
+            text = article.content,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(8.dp)
+        )
+
+        // Przyciski like
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start,
+            modifier = Modifier.padding(start = 8.dp)
+        ) {
+            IconButton(
+                onClick = {
+                    isLiked = !isLiked
+                    likes += if (isLiked) 1 else -1
+                }
+            ) {
+                Icon(
+                    imageVector = if (isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+                    contentDescription = if (isLiked) "Unlike" else "Like",
+                    tint = if (isLiked) Color.Magenta else Color.Gray
+                )
+            }
+            Text(text = "$likes likes", fontSize = 16.sp, modifier = Modifier.padding(start = 4.dp))
+        }
+    }
+}
+
+
+@Composable
+fun ImageCard(
+    image: Image,
+    modifier: Modifier = Modifier
+) {
+    var likes by remember { mutableStateOf(image.likes) }
+    var isLiked by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = modifier
+            .padding(8.dp)
+            .clip(RoundedCornerShape(8.dp))
+    ) {
+        // Wyświetlenie obrazu
+        AsyncImage(
+            model = image.url,
+            placeholder = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = "Image Content",
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        // Przyciski like
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start,
+            modifier = Modifier.padding(start = 8.dp)
+        ) {
+            IconButton(
+                onClick = {
+                    isLiked = !isLiked
+                    likes += if (isLiked) 1 else -1
+                }
+            ) {
+                Icon(
+                    imageVector = if (isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+                    contentDescription = if (isLiked) "Unlike" else "Like",
+                    tint = if (isLiked) Color.Cyan else Color.Gray
+                )
+            }
+            Text(text = "$likes likes", fontSize = 16.sp, modifier = Modifier.padding(start = 4.dp))
+        }
+    }
+}
+

@@ -97,7 +97,7 @@ fun AppBit322NavHost(
                 login = login,
                 navigateBack = { navController.navigateUp() },
                 navigateToListPreferences = { navController.navigate(ListPreferencesDestination.route) },
-                navigateToListHobby = { navController.navigate(HobbyDestination.route) }
+                navigateToListHobby = { navController.navigate(ListHobbiesDestination.route) }
             )
         }
 
@@ -110,6 +110,10 @@ fun AppBit322NavHost(
             UploadScreen(
                 login = login,
                 navigateBack = { navController.navigateUp() },
+                navigateToHome = { navController.navigate(HomeDestination.route) },
+                navigateToProfile = { navController.navigate(ProfileDestination.route) },
+                navigateToHobby = { navController.navigate(HobbyDestination.route) },
+                navigateToUpload = { navController.navigate(UploadDestination.route) }
 
             )
         }

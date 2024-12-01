@@ -5,8 +5,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -119,7 +122,6 @@ fun HobbyScreen(
         LazyColumn(
             content = {
                 item {
-                Text(text = "Witaj $login", modifier = Modifier.padding(8.dp), fontSize = 32.sp)
 //                when (hobbyUiState) {
 //                    is HobbyUiState.Loading -> {
 //                        Text(text = "Loading...", modifier = Modifier.padding(8.dp), fontSize = 32.sp)
@@ -355,20 +357,17 @@ fun TopAppBarHobby(
 ) {
     CenterAlignedTopAppBar(
         title = {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp) // Dodaj odstępy w ramach top app baru
-            ) {
+
                 // Główna ikony nawigacji
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center,
+                    horizontalArrangement = Arrangement.SpaceEvenly,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp) // Odstęp między rzędami
                 ) {
+
+
                     IconButton(onClick = { navigateBack() }) {
                         Icon(imageVector = Icons.Outlined.ArrowBack, contentDescription = "")
                     }
@@ -387,13 +386,13 @@ fun TopAppBarHobby(
                 }
 
                 // Dodatkowy wiersz przy aktywnym `isRow`
-                if (isRow) {
 
-                }
-            }
         },
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(),
+
 //            .height(if (isRow) 240.dp else 60.dp) // Zwiększ wysokość, jeśli dodatkowy wiersz jest aktywny
     )
 }
+
+
