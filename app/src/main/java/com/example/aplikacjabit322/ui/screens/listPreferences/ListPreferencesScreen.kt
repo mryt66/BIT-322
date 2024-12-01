@@ -40,7 +40,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplikacjabit322.Bit322TopAppBar
 import com.example.aplikacjabit322.ui.AppViewModelProvider
-import com.example.aplikacjabit322.ui.screens.database.readTagsFromDatabase
+import com.example.aplikacjabit322.ui.screens.login.LoginViewModel
 import com.example.phonebookapp.ui.navigation.NavigationDestination
 import kotlinx.coroutines.launch
 
@@ -67,10 +67,12 @@ fun processTags(viewModel: ListPreferencesViewModel = viewModel(factory = AppVie
 fun DisplaySortedTags(viewModel: ListPreferencesViewModel = viewModel(factory = AppViewModelProvider.Factory), modifier: Modifier) {
     var sortedTags by remember { mutableStateOf<List<String>>(emptyList()) }
 
-    LaunchedEffect(Unit) {
-        val tags = viewModel.readAllPreferences() // Wywołanie funkcji suspend
-        sortedTags = viewModel.getSortedTags(tags)
-    }
+//    LaunchedEffect(Unit) {
+//        val tags = viewModel.readAllPreferences() // Wywołanie funkcji suspend
+//        sortedTags = viewModel.getSortedTags(tags)
+//    }
+
+    val exampleSortedTags = listOf("tag1", "tag2", "tag3")
 
     // Wyświetlanie posortowanych tagów
     LazyColumn {
@@ -90,6 +92,10 @@ fun ListPreferencesScreen(
     viewModel: ListPreferencesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val preferencesUiState = viewModel.listPreferencesUiState
+
+    val login2 = LoginViewModel.login
+
+    Log.d("ListPreferencesScreen", "login: $login2")
 
     Scaffold(
         topBar = {
@@ -129,7 +135,15 @@ fun ListPreferencesScreen(
 
             // Display sorted tags if search status is true
             if (preferencesUiState.searchStatus) {
-                DisplaySortedTags(viewModel = viewModel, modifier = Modifier.padding(16.dp))
+                val tags = listOf("Sport", "Muzyka", "Filmy", "Gry", "Gotowanie", "Podróże")
+                val clickedTags = viewModel.listPreferencesUiState.clickedTags // Pobranie stanu klikniętych tagów
+                val sortedTags = viewModel.getSortedTags(tags) // Uzyskanie posortowanej listy tagów
+                PreferencesTags(
+                    tags = sortedTags,
+                    clickedTags = clickedTags,
+                    onTagClick = viewModel::ontagClick
+                )
+//                DisplaySortedTags(viewModel = viewModel, modifier = Modifier.padding(16.dp))
             }
         }
     }

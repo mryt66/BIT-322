@@ -3,6 +3,7 @@ package com.example.aplikacjabit322.ui.screens.home
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -75,38 +76,79 @@ fun HomeScreen(
     ) {innerPadding->
 
         val maxItemsPerCategory = 5
+        val cookingCommunity = Community(
+            description = "Społeczność dla pasjonatów gotowania i kulinariów! Wymieniaj się przepisami, technikami i inspiracjami.",
+            nick = "CookingCraze",
+            photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSJtHaKrsNfbHLA6ezWQxv27jIqxMaHih2ZQ&s",
+            title = "Master Chefs Club",
+            likes = 9800
+        )
 
+        val cookingFunFact = FunFact(
+            fact = "Najdroższa pizza świata kosztuje ponad 12 tysięcy dolarów i zawiera składniki takie jak trufle, złoto i kawior.",
+            likes = 620
+        )
+
+        val cookingArticle = Article(
+            title = "Historia gotowania: Jak ewoluowały nasze smaki",
+            content = "Gotowanie towarzyszy ludzkości od tysięcy lat. Pierwsze dowody na świadome gotowanie pochodzą z czasów prehistorycznych...",
+            likes = 2700
+        )
+
+        val cookingImage = Image(
+            url = "https://payload.cargocollective.com/1/1/42350/507367/IMG_0958_o.JPG",
+            likes = 540
+        )
         var limitedFunFacts = homeUiState.listOfFunFacts.take(maxItemsPerCategory)
         val limitedCommunities = homeUiState.listOfCommunities.take(maxItemsPerCategory)
         val limitedArticles = homeUiState.listOfArticles.take(maxItemsPerCategory)
         val limitedImages = homeUiState.listOfImages.take(maxItemsPerCategory)
 
+        val testLimitedFunFacts = listOf(cookingFunFact)
+        val testLimitedCommunities = listOf(cookingCommunity)
+        val testLimitedArticles = listOf(cookingArticle)
+        val testLimitedImages = listOf(cookingImage)
+
 
         val mixedList = mutableListOf<Any>()
-        for (i in 0 until maxItemsPerCategory) {
-            if (i < limitedFunFacts.size) mixedList.add(limitedFunFacts[i])
-            if (i < limitedCommunities.size) mixedList.add(limitedCommunities[i])
-            if (i < limitedArticles.size) mixedList.add(limitedArticles[i])
-            if (i < limitedImages.size) mixedList.add(limitedImages[i])
+        for (i in 0 until 1) {
+            if (i < limitedFunFacts.size) mixedList.add(testLimitedFunFacts[i])
+            if (i < limitedCommunities.size) mixedList.add(testLimitedCommunities[i])
+            if (i < limitedArticles.size) mixedList.add(testLimitedArticles[i])
+            if (i < limitedImages.size) mixedList.add(testLimitedImages[i])
+        }
+        Column(modifier = Modifier.padding(innerPadding)    ) {
+
+            FunFactCard(fact = testLimitedFunFacts[0])
+            CommunityCard(community = cookingCommunity)
+            ArticleCard(article = cookingArticle)
+            ImageCard(image = cookingImage)
         }
 
+//
+//        LazyColumn(content = {
+//            items(mixedList.size) { index ->
+//                val item = mixedList[index]
+//                when (item) {
+//                    is FunFact -> FunFactCard(fact = item, modifier = Modifier.padding(8.dp))
+//                    is Community -> CommunityCard(community = item, modifier = Modifier.padding(8.dp))
+//                    is Article -> ArticleCard(article = item, modifier = Modifier.padding(8.dp))
+//                    is Image -> ImageCard(image = item, modifier = Modifier.padding(8.dp))
+//                }
+//            }
+//        },
+//            modifier = Modifier
+//                .padding(innerPadding)
+//                .fillMaxSize(),
+//            horizontalAlignment = Alignment.CenterHorizontally,
+//            verticalArrangement = Arrangement.Center
+//        )
+//        LazyColumn (Modifier.padding(innerPadding)){
+//
+//
+//            }
+        }
 
-        LazyColumn(content = {
-            items(mixedList.size) { index ->
-                val item = mixedList[index]
-                when (item) {
-                    is FunFact -> FunFactCard(fact = item, modifier = Modifier.padding(8.dp))
-                    is Community -> CommunityCard(community = item, modifier = Modifier.padding(8.dp))
-                    is Article -> ArticleCard(article = item, modifier = Modifier.padding(8.dp))
-                    is Image -> ImageCard(image = item, modifier = Modifier.padding(8.dp))
-                }
-            }
-        },
-            modifier = Modifier.padding(innerPadding).fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        )
-    }
 
 
 }

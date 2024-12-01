@@ -6,12 +6,18 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 
+
+
 class LoginViewModel : ViewModel(){
     var name = "nazwa Ja"
     var mail = "gmail"
     var login = "1234"
     var loginUiState by mutableStateOf(LoginUiState())
         private set
+
+    companion object {
+        public var login = ""
+    }
 
     fun saveToBase() {
         //TODO
@@ -49,6 +55,7 @@ class LoginViewModel : ViewModel(){
     fun nickUpdate(nick: String) {
         if (nick.length < 20) {
             loginUiState = loginUiState.copy(nick = nick)
+            LoginViewModel.login = nick
         }
     }
 }

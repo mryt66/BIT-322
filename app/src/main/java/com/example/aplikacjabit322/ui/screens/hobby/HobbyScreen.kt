@@ -140,9 +140,25 @@ fun HobbyScreen(
 //                        }
 //                    }
 //                }
+                    val cookingCommunity = com.example.aplikacjabit322.ui.screens.home.Community(
+                        description = "Społeczność dla pasjonatów gotowania i kulinariów! Wymieniaj się przepisami, technikami i inspiracjami.",
+                        nick = "CookingCraze",
+                        photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSJtHaKrsNfbHLA6ezWQxv27jIqxMaHih2ZQ&s",
+                        title = "Master Chefs Club",
+                        likes = 9800
+                    )
+                    val nowy = Community( "cos", "tam" ,"asdfsa","asdfa",123)
+                    val exampleVideoList= listOf(" liJVSwOiiwg", "liJVSwOiiwg", "liJVSwOiiwg", "liJVSwOiiwg")
+                    val exampleArticleList = listOf("val sewingArticle = Article(\n" +
+                            "    title = \"Ewolucja mody: Krawiectwo wczoraj i dziś\",\n" +
+                            "    content = \"Krawiectwo jest jedną z najstarszych form rzemiosła. Początkowo ludzie używali skór zwierząt, które łączyli prostymi technikami...\",\n" +
+                            "    likes = 1200\n" +
+                            ")", "Gotowanie towarzyszy ludzkości od tysięcy lat. Pierwsze dowody na świadome gotowanie pochodzą z czasów prehistorycznych.", "Article 3", "Article 4")
+                    val exampleCommunities = listOf(nowy)
+
                     when (hobbyUiState.whichList) {
                         0 -> {
-                            val listOfVideos = hobbyUiState.listOfVideos
+                            val listOfVideos = exampleVideoList
                             listOfVideos.forEach { link ->
                                 YouTubePlayer(
                                     youtubeVideoId = link,
@@ -152,7 +168,7 @@ fun HobbyScreen(
                         }
 
                         1 -> {
-                            val listOfArticles = hobbyUiState.listOfArticles
+                            val listOfArticles = exampleArticleList
                             listOfArticles.forEach { article ->
                                 Column {
                                     Text(text = article, modifier = Modifier.padding(8.dp))
@@ -161,7 +177,7 @@ fun HobbyScreen(
 
                         }
                         2 -> {
-                            val listOfCommunities = hobbyUiState.listOfCommunities
+                            val listOfCommunities = exampleCommunities
                             listOfCommunities.forEach { community ->
                                 Column(modifier = Modifier.padding(8.dp)) {
 
