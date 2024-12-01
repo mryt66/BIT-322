@@ -31,7 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplikacjabit322.Bit322TopAppBar
 import com.example.aplikacjabit322.ui.AppViewModelProvider
+import com.example.aplikacjabit322.ui.screens.database.readTagsFromDatabase
 import com.example.phonebookapp.ui.navigation.NavigationDestination
+import kotlinx.coroutines.runBlocking
 
 
 object ListPreferencesDestination {
@@ -47,7 +49,8 @@ fun ListPreferencesScreen(
     navigateToListHobbies: (String) -> Unit,
     viewModel: ListPreferencesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
-    val tags = listOf("Sport", "Muzyka", "Filmy", "Gry", "Gotowanie", "Podróże")
+
+    val tags = runBlocking{ readTagsFromDatabase() } // Pobranie tagów z bazy danych
     val clickedTags = viewModel.listPreferencesUiState.clickedTags // Pobranie stanu klikniętych tagów
     val sortedTags = viewModel.getSortedTags(tags) // Uzyskanie posortowanej listy tagów
 

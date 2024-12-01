@@ -10,8 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.aplikacjabit322.ui.screens.database.insertHobbyFromFile
 import com.example.aplikacjabit322.ui.screens.listPreferences.ListPreferencesScreen
 import com.example.aplikacjabit322.ui.screens.login.LoginScreen
+import com.example.aplikacjabit322.ui.screens.mr.scrapeFirstLinks
 import com.example.aplikacjabit322.ui.theme.AplikacjaBit322Theme
 
 class MainActivity : ComponentActivity() {
@@ -37,8 +39,11 @@ class MainActivity : ComponentActivity() {
 //                    navigateToListPreferences = { },
 //                    navigateToHome = { /*TODO*/ }
 //                )
+//                scrapeFirstLinks("football").forEach {
+//                    println(it)
+//                }
+                insertHobbyFromFile("hobbies.txt")
                 AppBit322()
-
             }
         }
     }
