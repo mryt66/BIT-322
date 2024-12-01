@@ -153,44 +153,42 @@ fun HobbyScreen(
                         }
 
                         1 -> {
-                            val listOfArticles = hobbyUiState.listOfDescriptions
+                            val listOfArticles = hobbyUiState.listOfArticles
                             listOfArticles.forEach { article ->
                                 Column {
-//                                AsyncImage(
-//                                    model = article.image,
-//                                    placeholder = painterResource(id = R.drawable.ic_launcher_foreground),
-//                                    error = painterResource(id = R.drawable.ic_launcher_foreground),
-//                                    contentDescription = "The delasign logo",
-//                                )
-//                                Text(text = article.title, modifier = Modifier.padding(8.dp))
                                     Text(text = article, modifier = Modifier.padding(8.dp))
                                 }
                             }
 
                         }
-//                    2 -> {
-//                        val listOfCommunities = hobbyUiState.listOfCommunities
-//                        listOfCommunities.forEach { community ->
-//                            Column {
-//                                Text(text = community, modifier = Modifier.padding(8.dp))
-//                            }
-//                        }
-//                    }
+                        2 -> {
+                            val listOfCommunities = hobbyUiState.listOfCommunities
+                            listOfCommunities.forEach { community ->
+                                Column(modifier = Modifier.padding(8.dp)) {
+
+                                    AsyncImage(
+                                        model = community.photoUrl,
+                                        placeholder = painterResource(id = R.drawable.ic_launcher_foreground),
+                                        error = painterResource(id = R.drawable.ic_launcher_foreground),
+                                        contentDescription = "Zdjęcie społeczności",
+                                    )
+                                    Text(
+                                        text = community.description,
+                                        modifier = Modifier.padding(8.dp)
+                                    )
+                                    Text(
+                                        text = "@${community.nick}",
+                                        modifier = Modifier.padding(8.dp)
+                                    )
+                                }
+                            }
+                        }
                     }
 //                        YouTubePlayer(
 //                            youtubeVideoId = "liJVSwOiiwg",
 //                            lifecycleOwner = LocalLifecycleOwner.current
 //                        )
 
-
-                    AsyncImage(
-                        model = "https://delasign.com/delasignBlack.png",
-                        placeholder = painterResource(id = R.drawable.ic_launcher_foreground),
-                        error = painterResource(id = R.drawable.ic_launcher_foreground),
-                        contentDescription = "The delasign logo",
-                    )
-                    Text(text = "Jakiś opis", modifier = Modifier.padding(8.dp))
-                    Text(text = "@ Jakiś użytkownik", modifier = Modifier.padding(8.dp))
 
 
                 }

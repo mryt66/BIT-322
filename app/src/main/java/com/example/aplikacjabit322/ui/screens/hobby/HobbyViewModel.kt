@@ -21,9 +21,15 @@ data class HobbyUiState(
     val password: String = "",
     val nick: String = "",
     val listOfVideos: List<String> = emptyList(),
-    val listOfDescriptions: List<String> = emptyList(),
+    val listOfArticles: List<String> = emptyList(),
     val listOfLikes: List<Int> = emptyList(),
     val listOfUsernames: List<String> = emptyList(),
     val whichList: Int = 0,
-//    val listOfComunities:
+    val listOfCommunities: List<Community> = emptyList()
+)
+
+data class Community(
+    val description: String,
+    val nick: String,
+    val photoUrl: String
 )
