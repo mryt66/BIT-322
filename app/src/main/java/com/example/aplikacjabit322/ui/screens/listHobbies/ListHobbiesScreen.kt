@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -55,13 +56,14 @@ fun ListHobbiesScreen(
     Scaffold(
         topBar = {
             Bit322TopAppBar(
-                title = "Hobby",
+                title = "Suggested Hobby",
                 canNavigateBack = true,
                 navigateUp = navigateBack,
                 canClickButton = true,
                 onClickButton = {
                     navigateToHome(login ?: "null")
                 },
+                buttonIcon = Icons.Default.Done
             )
         }
     ) { innerPadding ->
@@ -72,7 +74,7 @@ fun ListHobbiesScreen(
                 .padding(innerPadding),
         ) {
             Text(
-                text = "Proponowane Hobby",
+                text = "Mark your hobbies!",
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,

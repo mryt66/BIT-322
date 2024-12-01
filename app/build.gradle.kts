@@ -76,8 +76,18 @@ dependencies {
     implementation("org.jsoup:jsoup:1.14.3")
     implementation( "com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
 
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation ("androidx.datastore:datastore-preferences:1.1.1")
+
+    implementation("org.osmdroid:osmdroid-android:6.1.11")
+    implementation("org.osmdroid:osmdroid-geopackage:6.1.11")
+    implementation("org.osmdroid:osmdroid-wms:6.1.11")
+    implementation("org.osmdroid:osmdroid-mapsforge:6.1.11")
+
     implementation("com.google.firebase:firebase-auth:23.1.0")
     implementation("com.google.firebase:firebase-firestore:25.1.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
