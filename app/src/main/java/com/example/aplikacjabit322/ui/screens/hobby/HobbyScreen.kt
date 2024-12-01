@@ -140,10 +140,21 @@ fun HobbyScreen(
 //                        }
 //                    }
 //                }
+                    val cookingCommunity = com.example.aplikacjabit322.ui.screens.home.Community(
+                        description = "Społeczność dla pasjonatów gotowania i kulinariów! Wymieniaj się przepisami, technikami i inspiracjami.",
+                        nick = "CookingCraze",
+                        photoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSJtHaKrsNfbHLA6ezWQxv27jIqxMaHih2ZQ&s",
+                        title = "Master Chefs Club",
+                        likes = 9800
+                    )
                     val nowy = Community( "cos", "tam" ,"asdfsa","asdfa",123)
                     val exampleVideoList= listOf(" liJVSwOiiwg", "liJVSwOiiwg", "liJVSwOiiwg", "liJVSwOiiwg")
-                    val exampleArticleList = listOf("Article 1", "Article 2", "Article 3", "Article 4")
-                    val exampleCommunities = listOf(nowy)
+                    val exampleArticleList = listOf("val sewingArticle = Article(\n" +
+                            "    title = \"Ewolucja mody: Krawiectwo wczoraj i dziś\",\n" +
+                            "    content = \"Krawiectwo jest jedną z najstarszych form rzemiosła. Początkowo ludzie używali skór zwierząt, które łączyli prostymi technikami...\",\n" +
+                            "    likes = 1200\n" +
+                            ")", "Gotowanie towarzyszy ludzkości od tysięcy lat. Pierwsze dowody na świadome gotowanie pochodzą z czasów prehistorycznych.", "Article 3", "Article 4")
+                    val exampleCommunities = listOf(nowy, cookingCommunity, nowy, nowy)
 
                     when (hobbyUiState.whichList) {
                         0 -> {
