@@ -51,7 +51,7 @@ fun ProfileScreen(
     Scaffold(
         topBar = {
             Bit322TopAppBar(
-                title = "Witaj $login",
+                title = "Hello Bartek",
                 canNavigateBack = true,
                 navigateUp = navigateBack
             )
@@ -65,12 +65,12 @@ fun ProfileScreen(
         ) {
             // Przycisk do edycji hobby
             Button(onClick = { navigateToListHobby(login ?: "null") }) {
-                Text(text = "Edytuj swoje hobby")
+                Text(text = "Edit hobbies")
             }
 
             // Przycisk do edycji preferencji
             Button(onClick = { navigateToListPreferences(login ?: "null") }) {
-                Text(text = "Edytuj swoje preferencje")
+                Text(text = "Edit preferences")
             }
 
             Spacer(modifier = Modifier.height(16.dp))

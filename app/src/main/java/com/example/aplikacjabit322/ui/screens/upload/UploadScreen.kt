@@ -117,7 +117,7 @@ fun EntryTitle(
         onValueChange = { newValue ->
             onTitleChange(newValue)
         },
-        label = { Text("Enter description") },
+        label = { Text("Enter title") },
         modifier = Modifier
             .padding(16.dp)
             .fillMaxWidth(),

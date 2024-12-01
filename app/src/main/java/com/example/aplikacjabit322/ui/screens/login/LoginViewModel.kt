@@ -5,9 +5,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
+
+
 class LoginViewModel : ViewModel(){
     var loginUiState by mutableStateOf(LoginUiState())
         private set
+
+    companion object {
+        public var login = ""
+    }
 
     fun saveToBase() {
         //TODO
@@ -28,6 +34,7 @@ class LoginViewModel : ViewModel(){
     fun nickUpdate(nick: String) {
         if (nick.length < 20) {
             loginUiState = loginUiState.copy(nick = nick)
+            LoginViewModel.login = nick
         }
     }
 }

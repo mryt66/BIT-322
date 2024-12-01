@@ -140,9 +140,14 @@ fun HobbyScreen(
 //                        }
 //                    }
 //                }
+                    val nowy = Community( "cos", "tam" ,"asdfsa","asdfa",123)
+                    val exampleVideoList= listOf(" liJVSwOiiwg", "liJVSwOiiwg", "liJVSwOiiwg", "liJVSwOiiwg")
+                    val exampleArticleList = listOf("Article 1", "Article 2", "Article 3", "Article 4")
+                    val exampleCommunities = listOf(nowy)
+
                     when (hobbyUiState.whichList) {
                         0 -> {
-                            val listOfVideos = hobbyUiState.listOfVideos
+                            val listOfVideos = exampleVideoList
                             listOfVideos.forEach { link ->
                                 YouTubePlayer(
                                     youtubeVideoId = link,
@@ -152,7 +157,7 @@ fun HobbyScreen(
                         }
 
                         1 -> {
-                            val listOfArticles = hobbyUiState.listOfArticles
+                            val listOfArticles = exampleArticleList
                             listOfArticles.forEach { article ->
                                 Column {
                                     Text(text = article, modifier = Modifier.padding(8.dp))
@@ -161,7 +166,7 @@ fun HobbyScreen(
 
                         }
                         2 -> {
-                            val listOfCommunities = hobbyUiState.listOfCommunities
+                            val listOfCommunities = exampleCommunities
                             listOfCommunities.forEach { community ->
                                 Column(modifier = Modifier.padding(8.dp)) {
 
